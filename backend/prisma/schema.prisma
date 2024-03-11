@@ -1,0 +1,75 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  email    String @unique
+  password String
+
+  isAdmin Boolean @default(false) @map("is_admin")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  articles Article[]
+}
+
+model NewsPaper {
+  id     Int    @id @default(autoincrement())
+  year   Int
+  name   String
+  number Int
+
+  articles Article[]
+}
+
+model Journal {
+  id     Int    @id @default(autoincrement())
+  year   Int
+  name   String
+  number Int
+
+  articles Article[]
+}
+
+model Article {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  category   Category? @relation(fields: [categoryId], references: [id])
+  categoryId Int?      @map("category_id")
+
+  author   Author? @relation(fields: [authorId], references: [id])
+  authorId Int?    @map("author_id")
+
+  newsPaper   NewsPaper? @relation(fields: [newsPaperId], references: [id])
+  newsPaperId Int?       @map("newsPaper_id")
+
+  journal   Journal? @relation(fields: [journalId], references: [id])
+  journalId Int?     @map("journal_id")
+
+  keywords      String[]
+  year          Int
+  articleNumber Int      @map("article_number")
+  startPage     Int      @map("start_page")
+}
+
+model Author {
+  id   Int    @id @default(autoincrement())
+  name String @unique
+
+  articles Article[]
+}

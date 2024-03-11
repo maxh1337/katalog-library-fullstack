@@ -1,0 +1,207 @@
+.languages_wrapper {
+	border: 2px solid var(--dark-border);
+	border-radius: 15px;
+	box-sizing: border-box;
+	background: var(--dark-input);
+}
+
+body.light input,
+body.light .languages_wrapper {
+	border: 2px solid var(--light-border);
+	background: var(--light-input);
+}
+
+.dropdown {
+	position: relative;
+	/*   background: salmon; */
+}
+
+.dropdown:after {
+	content: '▾';
+	padding: 12px 15px;
+	position: absolute;
+	right: 5px;
+	top: 8px;
+	color: var(--dark-active-list);
+}
+
+body.light .dropdown:after {
+	color: var(--light-active-list);
+}
+
+.dropdown.active:after {
+	transform: rotate(180deg);
+}
+
+/* 
+* Dropdown list custom design 
+*/
+
+.dropdown_wrapper {
+	/*   background: pink; */
+	padding-top: 8px;
+	height: 250px;
+}
+
+.dropdown_wrapper.active {
+	display: block;
+}
+
+.languages_wrapper {
+	overflow-y: hidden;
+	height: 100%;
+	padding: 8px;
+	padding-right: 0;
+	background: var(--dark-input);
+}
+
+body.light .languages_wrapper {
+	background: var(--light-input);
+}
+
+#languages {
+	overflow-y: auto;
+	height: inherit;
+}
+
+#languages span {
+	display: block;
+	padding: 12px;
+	border-radius: 15px;
+	letter-spacing: 0.025rem;
+	color: var(--dark-inactive-list);
+}
+
+#languages span:hover {
+	background: var(--dark-list-hover);
+	color: var(--dark-active-list);
+	cursor: pointer;
+}
+
+body.light #languages span {
+	color: var(--light-inactive-list);
+}
+
+body.light #languages span:hover {
+	background: var(--light-list-hover);
+	color: var(--light-active-list);
+}
+
+/* 
+* 
+* Switch styles
+* W3Schools => https://www.w3schools.com/howto/howto_css_switch.asp
+* 
+*/
+
+/* The switch - the box around the slider */
+.switch {
+	position: relative;
+	top: 15%;
+	left: 60%;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+/* The slider */
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--dark-toggle-bg);
+	border: 2px solid var(--dark-border);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: '';
+	height: 26px;
+	width: 26px;
+	left: 2px;
+	bottom: 2px;
+	background: var(--dark-input);
+	-webkit-transition: 0.4s;
+	transition: 0.4s;
+}
+
+body.light .slider {
+	background-color: var(--light-toggle-bg);
+	border: 2px solid var(--light-border);
+}
+
+body.light .slider:before {
+	background: var(--light-active-list);
+}
+
+/* input:checked + .slider {
+  background-color: white;
+} */
+
+/* input:checked + .slider:before {
+  background-color: #2196F3;
+} */
+
+/* input:checked + .slider .fa-moon {
+  visibility: hidden;
+}
+
+input:checked + .slider .fa-sun {
+  visibility: visible;
+} */
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+.fa-solid {
+	font-size: 18px;
+	position: absolute;
+	top: 21.6%;
+	/*   color: white; */
+}
+
+.fa-moon {
+	left: 15.6%;
+	color: var(--dark-toggle-moon);
+}
+
+.fa-sun {
+	left: 58%;
+	color: var(--dark-toggle-sun);
+}
+
+body.light .fa-moon {
+	color: var(--light-toggle-moon);
+}
+
+body.light .fa-sun {
+	color: var(--light-toggle-sun);
+}

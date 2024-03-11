@@ -1,0 +1,44 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+	color: rgb(var(--foreground-rgb));
+	background: linear-gradient(90deg, #100e19 0%, #1c1326 46.87%, #100e19 100%);
+	@apply overflow-x-hidden text-base;
+}
+
+.disabled {
+	pointer-events: none;
+	cursor: default;
+	text-decoration: none;
+	opacity: 0.2 !important;
+}
+
+.btn {
+	@apply rounded-xl px-10 py-2 font-medium shadow transition duration-300 ease-in-out;
+
+	&:not(&:disabled) {
+		@apply hover:shadow-lg;
+	}
+
+	&.btn-gray {
+		@apply bg-gray1 text-white;
+	}
+
+	&.btn-red {
+		@apply bg-red text-white;
+	}
+
+	&.btn-large {
+		@apply px-12 py-4 text-xl;
+	}
+}
+
+.admin-btn {
+	@apply rounded-xl px-8 py-1 font-medium shadow transition duration-300 ease-in-out bg-white;
+
+	&.admin-btn-active {
+		@apply bg-red;
+	}
+}
